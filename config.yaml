@@ -1,15 +1,30 @@
+screens:
+  - name: 'Screen1'
+    socket: /dev/fb0
+    position-on-wall:
+      x: 0
+      y: 0
+  - name: 'Screen2'
+    socket: /dev/fb1
+    position-on-wall:
+      x: 'Screen1:1'
+      y: 0
+  - name: 'Screen3'
+    socket: /dev/fb2
+    position-on-wall:
+      x: 'Screen1:0.5'
+      y: 'Screen1:1'
+
 zones:
-  - name: 'Zone 1'
-    provider: '1'
-    buffer: /tmp/billboard/1
-    screens:
-      - socket: /dev/fb0
-        position:
-          x: 0
-          y: 0
-        size:
-          x: 0.5
-          y: 0.5
+  - name: 'Zone1'
+    provider: 'Folder1'
+    buffer: /tmp/billboard/Folder1
+      position:
+        x: 0
+        y: 0
+      size:
+        x: 'Screen1:0.5'
+        y: 1
     options:
       logo:
         display: True
@@ -19,15 +34,28 @@ zones:
           y: 0
         size: 0.1
       default_time: 10
-  
-  - name: 'Zone 2'
-    provider: '2'
-    buffer: /tmp/billboard/2
-    screens:
-      - socket: /dev/fb0
-        position:
-          x: 0.5
-          y: 0
-        size:
-          x: 0.5
-          y: 0.5
+
+  - name: 'Zone2'
+    provider: 'Folder2'
+    buffer: /tmp/billboard/Folder2
+      position:
+        x: 'Screen1:0.5'
+        y: 0
+      size:
+        x: 'Screen1:0.5+Screen2:0.5' # or 'Screen3:1'
+        y: 'Screen1:1+Screen3:1'
+    options:
+      logo:
+        display: False
+      default_time: 10
+
+
+  - name: 'Zone3'
+    provider: 'Folder3'
+    buffer: /tmp/billboard/Folder3
+      position:
+        x: 0
+        y: 0
+      size:
+        x: 'Screen1:1+Screen2:0.5'
+        y: 'Screen2:0.5'
