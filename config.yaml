@@ -1,0 +1,33 @@
+zones:
+  - name: 'Zone 1'
+    provider: '1'
+    buffer: /tmp/billboard/1
+    screens:
+      - socket: /dev/fb0
+        position:
+          x: 0
+          y: 0
+        size:
+          x: 0.5
+          y: 0.5
+    options:
+      logo:
+        display: True
+        image: '/home/theau/Documents/AML affiches rentree/logos/logo_aml.png'
+        position:
+          x: 0
+          y: 0
+        size: 0.1
+      default_time: 10
+  
+  - name: 'Zone 2'
+    provider: '2'
+    buffer: /tmp/billboard/2
+    screens:
+      - socket: /dev/fb0
+        position:
+          x: 0.5
+          y: 0
+        size:
+          x: 0.5
+          y: 0.5
