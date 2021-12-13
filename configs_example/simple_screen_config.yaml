@@ -1,22 +1,12 @@
 screens:
-  - name: 'Screen1'
-    socket: /dev/fb0
-    orientation: 0
+  - name: 'VS0'
+    socket: virtual
+    size:
+      x: 1600
+      y: 900
     position-on-wall:
       x: 0
       y: 0
-  - name: 'Screen2'
-    socket: /dev/fb1
-    orientation: 0
-    position-on-wall:
-      x: '{Screen1:sx}'
-      y: 0
-  - name: 'Screen3'
-    socket: /dev/fb2
-    orientation: 0
-    position-on-wall:
-      x: '{Screen1:sx}*0.5'
-      y: '{Screen1:sy}'
 
 zones:
   - name: 'Zone1'
@@ -26,8 +16,8 @@ zones:
       x: 0
       y: 0
     size:
-      x: '{Screen1:sx}*0.5'
-      y: '{Screen1:sy}'
+      x: '{VS0:sx} * .7'
+      y: '{VS0:sy}'
     options:
       logo:
         display: True
@@ -42,23 +32,22 @@ zones:
     provider: 'Folder2'
     buffer: /tmp/billboard/Folder2
     position:
-      x: '{Screen1:sx}*0.5'
+      x: '{VS0:sx} * .7'
       y: 0
     size:
-      x: '{Screen1:sx}*0.5 + {Screen2:sx}*0.5' # or '{Screen3:sx}'
-      y: '{Screen1:sy} + {Screen3:sy}'
+      x: '{VS0:sx} * 0.3'
+      y: '{VS0:sy} / 2'
     options:
       logo:
         display: False
       default_time: 10
 
-
   - name: 'Zone3'
     provider: 'Folder3'
     buffer: /tmp/billboard/Folder3
     position:
-      x: '{Screen1:sx}'
-      y: 0
+      x: '{VS0:sx} * .7'
+      y: '{Zone2:sy}'
     size:
-      x: '{Screen1:sx} + {Screen2:sx}*0.5'
-      y: '{Screen2:sy}*0.5'
+      x: '{Zone2:sx}'
+      y: '{Zone2:sy}'

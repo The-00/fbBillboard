@@ -1,0 +1,77 @@
+screens:
+  - name: 'VS0'
+    socket: virtual
+    size:
+      x: 1600
+      y: 900
+    position-on-wall:
+      x: 0
+      y: '{VS1:sy}'
+  - name: 'VS1'
+    socket: virtual
+    size:
+      x: '{VS0:sx}'
+      y: '{VS0:sy}'
+    position-on-wall:
+      x: '{VS0:sx}/2'
+      y: 0
+  - name: 'VS2'
+    socket: virtual
+    size:
+      x: '{VS0:sx}'
+      y: '{VS0:sy}'
+    position-on-wall:
+      x: '{VS0:sx}'
+      y: '{VS1:sy}'
+  - name: 'VS3'
+    socket: virtual
+    size:
+      x: '{VS0:sx}'
+      y: '{VS0:sy}'
+    position-on-wall:
+      x: '{VS0:sx}/2'
+      y: '{VS1:sy} + {VS0:sy}'
+
+zones:
+  - name: 'Zone1'
+    provider: 'Folder1'
+    buffer: /tmp/billboard/Folder1
+    position:
+      x: '{VS0:px}'
+      y: '{VS0:py}'
+    size:
+      x: '{VS0:sx}/2'
+      y: '{VS0:sy}'
+    options:
+      logo:
+        display: True
+        image: '/home/theau/Documents/AML affiches rentree/logos/logo_aml.png'
+        position:
+          x: 0
+          y: 0
+        size: 0.1
+      default_time: 10
+
+  - name: 'Zone2'
+    provider: 'Folder2'
+    buffer: /tmp/billboard/Folder2
+    position:
+      x: '{VS1:px}'
+      y: '{VS1:py}'
+    size:
+      x: '{VS1:sx}'
+      y: '{VS1:sy} + {VS0:sy} + {VS3:sy}'
+    options:
+      logo:
+        display: False
+      default_time: 10
+
+  - name: 'Zone3'
+    provider: 'Folder3'
+    buffer: /tmp/billboard/Folder3
+    position:
+      x: '{VS2:px} + {VS2:sx}/2'
+      y: '{VS2:py}'
+    size:
+      x: '{VS2:sx}/2'
+      y: '{VS2:sy}'
