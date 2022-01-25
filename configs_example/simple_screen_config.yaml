@@ -1,6 +1,6 @@
 screens:
   - name: 'VS0'
-    socket: virtual
+    socket: /dev/fb0
     size:
       x: 1600
       y: 900
@@ -10,8 +10,8 @@ screens:
 
 zones:
   - name: 'Zone1'
-    provider: 'Folder1'
-    buffer: /tmp/billboard/Folder1
+    provider: /tmp/provider/Folder1
+    buffer: /tmp/buffer/Folder1
     position:
       x: 0
       y: 0
@@ -29,8 +29,8 @@ zones:
       default_time: 10
 
   - name: 'Zone2'
-    provider: 'Folder2'
-    buffer: /tmp/billboard/Folder2
+    provider: /tmp/provider/Folder2
+    buffer: /tmp/buffer/Folder2
     position:
       x: '{VS0:sx} * .7'
       y: 0
@@ -43,8 +43,8 @@ zones:
       default_time: 10
 
   - name: 'Zone3'
-    provider: 'Folder3'
-    buffer: /tmp/billboard/Folder3
+    provider: /tmp/provider/Folder3
+    buffer: /tmp/buffer/Folder3
     position:
       x: '{VS0:sx} * .7'
       y: '{Zone2:sy}'

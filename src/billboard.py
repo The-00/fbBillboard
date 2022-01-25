@@ -133,6 +133,12 @@ class BillBoard():
                 print("  ", sp[0]["name"], ":", sp[1:])
         
         # Run all Zones in Threads
+        time.sleep(10)
+        self.zones_threads = []
+        for z in self.zones:
+            z_thread = threading.Thread( target= z["zone"]._run_)
+            z_thread.start()
+            self.zones_threads.append( z_thread )
         
         
     
